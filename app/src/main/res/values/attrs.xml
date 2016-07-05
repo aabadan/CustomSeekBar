@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomSeekBar">
+        <attr name="csbThumbText" format="string" />
+        <attr name="csbMin" format="integer" />
+        <attr name="csbMax" format="integer" />
+        <attr name="csbIncrementBy" format="integer" />
+        <attr name="csbTextAfterValue" format="boolean"/>
+        <attr name="csbIsFloatValue" format="boolean"/>
+    </declare-styleable>
+</resources>
