@@ -17,11 +17,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="88dp"
-        custom:csbThumbText="%"
-        custom:csbMin="0"
-        custom:csbMax="25"
-        custom:csbIncrementBy="1"
-        custom:csbTextAfterValue="false"
-        custom:csbIsFloatValue="true">
+        custom:csbThumbText="USD"
+        custom:csbMin="1000"
+        custom:csbMax="100000"
+        custom:csbIncrementBy="1000">
     </com.example.aabadan.customseekbar.CustomSeekBar>
 </RelativeLayout>
