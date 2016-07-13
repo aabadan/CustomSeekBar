@@ -61,7 +61,7 @@ public class CustomSeekBar extends LinearLayout {
        seekBar.setThumbOffset(0);
 
        thumbTextView.setText(getGeneratedText());
-       thumbTextView.setX(seekBar.getThumb().getMinimumWidth() / 2);
+       thumbTextView.setX(seekBar.getThumb().getBounds().exactCenterX() - seekBar.getThumb().getMinimumWidth() / 2);
 
        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -69,17 +69,15 @@ public class CustomSeekBar extends LinearLayout {
            public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser) {
                progressPos = progressValue;
 
+               thumbTextView.setText(getGeneratedText());
+
                //if thumb text overflows view
-               if(seekBar.getThumb().getBounds().exactCenterX() + thumbTextView.getWidth() > seekBar.getWidth()){
-                   int left = seekBar.getLeft() + seekBar.getPaddingLeft();
-                   int right = seekBar.getRight() - seekBar.getPaddingRight();
-                   int pos = (((right - left) * seekBar.getProgress()) / seekBar.getMax());
-                   thumbTextView.setX(pos - thumbTextView.getWidth());
+               if(seekBar.getThumb().getBounds().exactCenterX() - seekBar.getThumb().getMinimumWidth() / 2 + thumbTextView.getWidth() > seekBar.getWidth()){
+                   thumbTextView.setX(seekBar.getWidth() - thumbTextView.getWidth() - seekBar.getThumb().getMinimumWidth() / 2);
                }else {
-                   thumbTextView.setX(seekBar.getThumb().getBounds().exactCenterX());
+                   thumbTextView.setX(seekBar.getThumb().getBounds().exactCenterX() - seekBar.getThumb().getMinimumWidth() / 2);
                }
 
-               thumbTextView.setText(getGeneratedText());
            }
 
            @Override
