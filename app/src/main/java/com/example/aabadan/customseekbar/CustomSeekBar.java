@@ -29,6 +29,8 @@ public class CustomSeekBar extends LinearLayout {
     private int progressPos = 0;
     private DecimalFormat df;
 
+    private View progressView;
+
     public CustomSeekBar(Context context) {
         super(context);
         initView(context);
@@ -36,6 +38,7 @@ public class CustomSeekBar extends LinearLayout {
 
     public CustomSeekBar(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.setWillNotDraw(false);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CustomSeekBar);
         this.textParam = ta.getString(R.styleable.CustomSeekBar_csbThumbText);
         this.min = ta.getInteger(R.styleable.CustomSeekBar_csbMin,0);
@@ -88,7 +91,6 @@ public class CustomSeekBar extends LinearLayout {
                thumbTextView.setText(getGeneratedText());
            }
        });
-
    }
 
     private String getGeneratedText(){
@@ -104,8 +106,6 @@ public class CustomSeekBar extends LinearLayout {
         if(isFloatValue) {
             float progressF = getPercentage(progress);
             progressTxt = progressF + "";
-        }else{
-            progressTxt = df.format(progress);
         }
 
         if(textAfterValue) {
@@ -120,4 +120,22 @@ public class CustomSeekBar extends LinearLayout {
     public float getPercentage(int intVal){
         return intVal / 100.0f;
     }
+
+   /* @Override
+    public void draw(Canvas canvas) {
+        super.draw(canvas);
+        Paint p = new Paint();
+        p.setStrokeWidth(3);
+        p.setColor(Color.GRAY);
+        float startX = seekBar.getX();
+        float startY = seekBar.getY() + seekBar.getHeight();
+        float stopX = seekBar.getX() + seekBar.getHeight() / 2;
+        float stopY = seekBar.getY();
+
+        while(stopX < seekBar.getRight()) {
+            canvas.drawLine(startX, startY, stopX, stopY, p);
+            startX += 10;
+            stopX += 10;
+        }
+    }*/
 }

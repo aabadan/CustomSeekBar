@@ -2,10 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@android:id/background"
+        android:id="@+id/backgroundFill"
         android:drawable="@drawable/csb_background_fill"/>
     <item android:id="@android:id/progress">
         <clip android:drawable="@drawable/csb_progress_fill" />
     </item>
-
+    <item android:id="@+id/line"
+        android:drawable="@drawable/csb_background_slash_fill"/>
 </layer-list>
